@@ -5,27 +5,38 @@ const SelectMenu = () => {
   const [selection, setSelection] = useState<string>();
   const [position, setPosition] = useState<Record<string, number>>();
 
+  function onSelectStart() {
+    setSelection(undefined);
+  }
+
+  function onSelectEnd() {
+    const activeSelection = document.getSelection();
+    const text = activeSelection?.toString();
+
+    if ( !activeSelection || !text ) {
+      setSelection(undefined);
+      return;
+    };
+
+    setSelection(text);
+
+    const rect = activeSelection.getRangeAt(0).getBoundingClientRect()
+
+    setPosition({
+      x: rect.left + (rect.width / 2) - (80 / 2),
+      y: rect.top + window.scrollY - 30,
+      width: rect.width,
+      height: rect.height,
+    })
+  }
+
   useEffect(() => {
-    document.addEventListener('selectionchange', () => {
-      const activeSelection = document.getSelection();
-      const text = activeSelection?.toString();
-
-      if ( !activeSelection || !text ) {
-        setSelection(undefined);
-        return;
-      };
-
-      setSelection(text);
-
-      const rect = activeSelection.getRangeAt(0).getBoundingClientRect()
-
-      setPosition({
-        x: rect.left + (rect.width / 2) - (80 / 2),
-        y: rect.top + window.scrollY - 30,
-        width: rect.width,
-        height: rect.height,
-      })
-    });
+    document.addEventListener('selectstart', onSelectStart);
+    document.addEventListener('mouseup', onSelectEnd);
+    return () => {
+      document.removeEventListener('selectstart', onSelectStart);
+      document.removeEventListener('mouseup', onSelectEnd);
+    }
   }, []);
 
   function onShare(text?: string) {
