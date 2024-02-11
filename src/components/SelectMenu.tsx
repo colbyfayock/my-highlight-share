@@ -1,13 +1,17 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const SelectMenu = () => {
+  const [selection, setSelection] = useState<string>();
+
   useEffect(() => {
     document.addEventListener('selectionchange', () => {
-      console.log('Selection:', document.getSelection()?.toString())
+      setSelection(document?.getSelection()?.toString());
     });
   }, []);
 
-  return null;
+  return (
+    <p>Selection: { selection }</p>
+  );
 }
 
 export default SelectMenu;
