@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 const SelectMenu = () => {
   useEffect(() => {
     document.addEventListener('selectionchange', () => {
-      console.log('Selection Changed!')
+      console.log('Selection:', document.getSelection()?.toString())
     });
   }, []);
 
