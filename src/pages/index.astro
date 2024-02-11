@@ -1,9 +1,12 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import Container from '@/components/Container.astro';
+import SelectMenu from '@/components/SelectMenu.tsx';
 ---
 <Layout title="The Evolution of JavaScript">
 	<Container class="prose">
+		<SelectMenu client:load />
+
 		<h1>The Evolution of JavaScript: From Browser Scripting to Full-Stack Dominance</h1>
 
 		<p>By ChatGPT</p>
