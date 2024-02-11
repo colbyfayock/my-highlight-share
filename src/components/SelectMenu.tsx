@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Twitter } from 'lucide-react';
+import { Toaster, toast } from 'sonner'
 
 const SelectMenu = () => {
   const [selection, setSelection] = useState<string>();
@@ -27,6 +28,13 @@ const SelectMenu = () => {
       y: rect.top + window.scrollY - 30,
       width: rect.width,
       height: rect.height,
+    });
+    
+    toast('Share this snippet!', {
+      action: {
+        label: 'Tweet',
+        onClick: () => onShare(text)
+      },
     })
   }
 
@@ -40,9 +48,10 @@ const SelectMenu = () => {
   }, []);
 
   function onShare(text?: string) {
-    if ( !selection ) return;
+    const textToShare = text || selection;
+    if ( !textToShare ) return;
     const message = [
-      `"${encodeURIComponent((text || selection).substring(0, 120))}"`,
+      `"${encodeURIComponent(textToShare.substring(0, 120))}"`,
       encodeURIComponent(window.location.href)
     ].join('%0A%0A')
     const url = `https://twitter.com/intent/tweet?text=${message}`
@@ -51,6 +60,7 @@ const SelectMenu = () => {
 
   return (
     <div role="dialog" aria-labelledby="share" aria-haspopup="dialog">
+      <Toaster position="bottom-center" />
       {selection && position && (
         <p
           className="
