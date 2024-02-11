@@ -2,7 +2,7 @@
 
 Demo for tutorial [Share Selected Text in React with the Selection API](https://www.youtube.com/watch?v=qkCV4DesiCs)
 
-📝 Article: 
+📝 Article: https://spacejelly.dev/posts/how-to-share-selected-text-in-react-with-the-selection-api
 
 📺 YouTube: https://www.youtube.com/watch?v=qkCV4DesiCs
 
