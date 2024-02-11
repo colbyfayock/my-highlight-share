@@ -1,12 +1,12 @@
-# Astro Blog with Appwrite
+# Share Tooltip on Text Selection
 
-Demo for tutorial 
+Demo for tutorial [Share Selected Text in React with the Selection API](https://www.youtube.com/watch?v=qkCV4DesiCs)
 
 📝 Article: 
 
-📺 YouTube: 
+📺 YouTube: https://www.youtube.com/watch?v=qkCV4DesiCs
 
-🚀 Demo: 
+🚀 Demo: https://my-highlight-share.vercel.app/
 
 ## More tutorials and walkthroughs
 
